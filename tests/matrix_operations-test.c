@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
-#include "matrix.h"
-#include "matrix_operations.h"
+#include "./../matrix.h"
+#include "./../matrix_operations.h"
 
 double set_matrix_a_item(unsigned i, unsigned j) {
     if (i <= j) return sqrt(i * j);
@@ -11,6 +11,11 @@ double set_matrix_a_item(unsigned i, unsigned j) {
 
 double set_matrix_b_item(unsigned i, unsigned j) {
     if (i >= j) return sqrt(i * j);
+    return 0;
+}
+
+double set_identity_matrix_item(unsigned i, unsigned j) {
+    if (i == j) return 1;
     return 0;
 }
 
@@ -40,7 +45,7 @@ int main(void) {
 
     free_matrix(c);
 
-    MATRIX* opposite_matrix_of_a = opposite_matrix_of(a);
+    MATRIX* opposite_matrix_of_a = get_opposite_matrix_of(a);
 
     printf("Opposite matrix of a:\n");
     print_matrix(opposite_matrix_of_a);
@@ -65,6 +70,22 @@ int main(void) {
             else assert(c->itens[i][j] == 0);
         }
     }
+
+    free_matrix(c);
+
+    MATRIX* identity_matrix = create_matrix(MATRIX_DIMENSION_SIZE, MATRIX_DIMENSION_SIZE, set_identity_matrix_item);
+
+    printf("Identity matrix:\n");
+    print_matrix(identity_matrix);
+
+    c = multiply_matrixes(a, identity_matrix);
+
+    printf("New matrix a:\n");
+    print_matrix(a);
+    printf("New matrix c:\n");
+    print_matrix(c);
+
+    assert(matrixes_are_equal(a, c) == true);
 
     free_matrix(c);
 
