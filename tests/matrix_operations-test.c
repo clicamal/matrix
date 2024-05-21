@@ -24,7 +24,7 @@ int main(void) {
 
     MATRIX* a = create_matrix(MATRIX_DIMENSION_SIZE, MATRIX_DIMENSION_SIZE, set_matrix_a_item);
     MATRIX* b = create_matrix(MATRIX_DIMENSION_SIZE, MATRIX_DIMENSION_SIZE, set_matrix_b_item);
-    MATRIX* c = sum_matrixes(a, b);
+    MATRIX* c = sum_matrices(a, b);
 
     printf("Matrix a:\n");
     print_matrix(a);
@@ -58,7 +58,7 @@ int main(void) {
 
     free_matrix(opposite_matrix_of_a);
 
-    c = subtract_matrixes(a, b);
+    c = subtract_matrices(a, b);
 
     printf("New matrix c:\n");
     print_matrix(c);
@@ -78,14 +78,14 @@ int main(void) {
     printf("Identity matrix:\n");
     print_matrix(identity_matrix);
 
-    c = multiply_matrixes(a, identity_matrix);
+    c = multiply_matrices(a, identity_matrix);
 
     printf("New matrix a:\n");
     print_matrix(a);
     printf("New matrix c:\n");
     print_matrix(c);
 
-    assert(matrixes_are_equal(a, c) == true);
+    assert(matrices_are_equal(a, c) == true);
 
     free_matrix(c);
 
