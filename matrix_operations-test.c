@@ -36,5 +36,9 @@ int main(void) {
         }
     }
 
+    free_matrix(a);
+    free_matrix(b);
+    free_matrix(c);
+
     return 0;
 }
