@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "header.h"
 
 bool matrices_have_same_order(MATRIX* a, MATRIX* b) {

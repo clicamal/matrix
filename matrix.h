@@ -63,3 +63,8 @@ void free_matrix(MATRIX* matrix) {
 double set_null_matrix_item(unsigned i, unsigned j) {
     return 0;
 }
+
+double set_identity_matrix_item(unsigned i, unsigned j) {
+    if (i == j) return 1;
+    return 0;
+}
