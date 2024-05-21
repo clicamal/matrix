@@ -18,3 +18,24 @@ MATRIX* sum_matrixes(MATRIX* a, MATRIX* b) {
 
     return result;
 }
+
+MATRIX* opposite_matrix_of(MATRIX* matrix) {
+    MATRIX* result = create_matrix(matrix->n_rows, matrix->n_columns, set_null_matrix_item);
+
+    for (int i = matrix->n_rows - 1; i >= 0; i--) {
+        for (int j = matrix->n_columns - 1; j >= 0; j--) {
+            result->itens[i][j] = -matrix->itens[i][j];
+        }
+    }
+
+    return result;
+}
+
+MATRIX* subtract_matrixes(MATRIX* a, MATRIX* b) {
+    MATRIX* opposite_matrix_of_b = opposite_matrix_of(b);
+    MATRIX* result = sum_matrixes(a, opposite_matrix_of_b);
+
+    free_matrix(opposite_matrix_of_b);
+
+    return result;
+}
