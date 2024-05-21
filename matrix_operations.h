@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "header.h"
 
+bool matrixes_have_same_order(MATRIX* a, MATRIX* b) {
+    return (a->n_rows == b->n_rows && a->n_columns == b->n_columns);
+}
+
 MATRIX* sum_matrixes(MATRIX* a, MATRIX* b) {
-    if (a->n_rows != b->n_rows || a->n_columns != b->n_columns) {
+    if (!matrixes_have_same_order(a, b)) {
         printf("Cannot sum matrixes of different order.\n");
         exit(SUM_OF_MATRIXES_OF_DIFFERENT_ORDER_ERROR);
     }
@@ -32,6 +37,11 @@ MATRIX* opposite_matrix_of(MATRIX* matrix) {
 }
 
 MATRIX* subtract_matrixes(MATRIX* a, MATRIX* b) {
+    if (!matrixes_have_same_order(a, b)) {
+        printf("Cannot sum matrixes of different order.\n");
+        exit(SUM_OF_MATRIXES_OF_DIFFERENT_ORDER_ERROR);
+    }
+
     MATRIX* opposite_matrix_of_b = opposite_matrix_of(b);
     MATRIX* result = sum_matrixes(a, opposite_matrix_of_b);
 
