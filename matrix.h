@@ -1,20 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef enum MATRIX_ERRORS {
-    MATRIX_ALLOCATION_ERROR = 1,
-    MATRIX_ROWS_ALLOCATION_ERROR,
-    MATRIX_COLUMNS_ALLOCATION_ERROR
-} MATRIX_ERRORS;
-
-typedef double (*SET_MATRIX_ITEM_FUNCTION)(unsigned i, unsigned j);
-
-typedef struct MATRIX {
-    unsigned n_rows;
-    unsigned n_columns;
-
-    double **itens;
-} MATRIX;
+#include "header.h"
 
 MATRIX* create_matrix(unsigned n_rows, unsigned n_columns, SET_MATRIX_ITEM_FUNCTION set_item) {
     MATRIX* matrix = (MATRIX*) malloc(sizeof(MATRIX));
@@ -43,7 +29,7 @@ MATRIX* create_matrix(unsigned n_rows, unsigned n_columns, SET_MATRIX_ITEM_FUNCT
         }
 
         for (int j = n_columns; j >= 0; j--) {
-            matrix->itens[i][j] = set_item(i, j);
+            matrix->itens[i][j] = set_item(i + 1, j + 1);
         }
     }
 
@@ -72,4 +58,8 @@ void free_matrix(MATRIX* matrix) {
 
     free(matrix->itens);
     free(matrix);
+}
+
+double set_null_matrix_item(unsigned i, unsigned j) {
+    return 0;
 }
