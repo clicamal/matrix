@@ -28,7 +28,7 @@ MATRIX* create_matrix(unsigned n_rows, unsigned n_columns, SET_MATRIX_ITEM_FUNCT
             exit(MATRIX_COLUMNS_ALLOCATION_ERROR);
         }
 
-        for (int j = n_columns; j >= 0; j--) {
+        for (int j = n_columns - 1; j >= 0; j--) {
             matrix->itens[i][j] = set_item(i + 1, j + 1);
         }
     }
