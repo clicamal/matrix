@@ -4,7 +4,7 @@
 
 MATRIX* sum_matrixes(MATRIX* a, MATRIX* b) {
     if (a->n_rows != b->n_rows || a->n_columns != b->n_columns) {
-        printf("Cannot sum matrixes of different order.");
+        printf("Cannot sum matrixes of different order.\n");
         exit(SUM_OF_MATRIXES_OF_DIFFERENT_ORDER_ERROR);
     }
 
