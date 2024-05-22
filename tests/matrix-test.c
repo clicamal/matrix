@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "matrix.h"
+#include "./../matrix.h"
 
 double set_triangular_superior_matrix_item(unsigned i, unsigned j) {
     if (i <= j) return 1;
@@ -19,6 +19,7 @@ int main(void) {
         }
     }
 
+    printf("Matriz triangular superior:\n");
     print_matrix(matrix);
 
     free_matrix(matrix);
